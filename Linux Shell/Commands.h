@@ -22,10 +22,7 @@ class SmallShell;
 typedef enum { finished = 0, stopped = 1, background = 2, empty = 3 }job_status;
 
 class Command {
-	// TODO: Add your data members
-protected:
-	// string entered_cmd;
-
+	
 public:
 	string entered_cmd;
 	bool stam;
@@ -361,13 +358,10 @@ void printstoppedlist(){
 	for (JobEntry& job : stoppedd) {
 		
 		if(job.j_status!=empty){
-							std::cout << "[" << job.j_id << "]" << job.cmd->getNameCmd() << " : " << job.p_id;
+	std::cout << "[" << job.j_id << "]" << job.cmd->getNameCmd() << " : " << job.p_id;
 	std::cout << '\n';
 	}
-	
 		}
-		
-	
 	}
 	void removeFinishedJobs() {
 
