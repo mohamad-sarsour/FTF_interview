@@ -2,7 +2,7 @@
 # To compile, type "make" or make "all"
 # To remove files, type "make clean"
 #
-OBJS = server.o request.o segel.o client.o FIFO_queue.o
+OBJS = server.o request.o helper.o client.o FIFO_queue.o
 TARGET = server
 
 CC = gcc
@@ -17,10 +17,10 @@ all: server client output.cgi
 	-cp output.cgi favicon.ico home.html public
 
 server: server.o request.o segel.o FIFO_queue.o
-	$(CC) $(CFLAGS) -o server server.o request.o segel.o FIFO_queue.o $(LIBS)
+	$(CC) $(CFLAGS) -o server server.o request.o helper.o FIFO_queue.o $(LIBS)
 
-client: client.o segel.o
-	$(CC) $(CFLAGS) -o client client.o segel.o $(LIBS)
+client: client.o helper.o
+	$(CC) $(CFLAGS) -o client client.o helper.o $(LIBS)
 
 output.cgi: output.c
 	$(CC) $(CFLAGS) -o output.cgi output.c
