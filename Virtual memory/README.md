@@ -15,7 +15,7 @@ The global pointer to the list will point to the first metadata structure (see m
 figure).
 ## part 2
 ###### the previous implementation has a few fragmentation issues, in this part i will work on solutions for some of those issues.
-######● **Challenge 1 (Memory utilization):**
+###### **● Challenge 1 (Memory utilization):**
 If we reuse freed memory sectors with bigger sizes than required, we’ll be wasting memory
 (internal fragmentation).
 Solution: Implement a function that smalloc() will use, such that if a pre-allocated
@@ -24,7 +24,7 @@ with two separate meta-data structs. One will serve the current allocation, and 
 remain unused for later (marked free and added to the list).
 Definition of “large enough”: After splitting, the remaining block (the one that is not used)
 has at least 128 bytes of free memory, excluding the size of your meta-data structure.
-● **Challenge 2 (Memory utilization):**
+###### **● Challenge 2 (Memory utilization):**
 Many allocations and de-allocations might cause two adjacent blocks to be free, but
 separate.
 Solution: Implement a function that sfree() will use, such that if one adjacent block
@@ -32,7 +32,7 @@ Solution: Implement a function that sfree() will use, such that if one adjacent 
 current one and the adjacent one) into one large free block. On the corner case where both
 the next and previous blocks are free, you should combine all 3 of them into one large
 block.
-● **Challenge 3 (Memory utilization):**
+###### **● Challenge 3 (Memory utilization):**
 Define the “Wilderness” chunk as the topmost allocated chunk. Let’s presume this chunk
 is free, and all others are full. It is possible that the new allocation requested is bigger than
 the wilderness block, thus requiring us to call sbrk() once more – but now, it is easier to
@@ -41,7 +41,7 @@ Solution: Change your current implementation, such that if:
 1. A new request has arrived, and no free memory chunk was found big enough.
 2. And the wilderness chunk is free.
 Then enlarge the wilderness chunk enough to store the new request.
-● **Challenge 4 (Large allocations):**
+###### **● Challenge 4 (Large allocations):**
 Recall from our first discussion that modern dynamic memory managers not only use
 sbrk() but also mmap(). This process helps reduce the negative effects of memory
 fragmentation when large blocks of memory are freed but locked by smaller, more recently
