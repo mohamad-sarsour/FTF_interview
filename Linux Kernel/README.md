@@ -1,0 +1,4 @@
+## In this project i was required to download the Linux source code and then modify and Rebuild the Kernel.
+###### the modification was to add a new functionality to the linux kernel called "process weights" which assign to every process a user-specified weight (integer number) that
+represents how “heavy” this process is on the computer.
+to support that i had to implement four new system calls to give the user the relevant API for the new functionality.  
