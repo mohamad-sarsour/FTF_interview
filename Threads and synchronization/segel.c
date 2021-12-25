@@ -1,4 +1,4 @@
-#include "segel.h"
+#include "helper.h"
 
 /************************** 
  * Error-handling functions
